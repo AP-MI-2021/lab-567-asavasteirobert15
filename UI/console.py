@@ -4,6 +4,11 @@ from Tests.tests_for_crud import test_crud
 
 
 def show_menu():
+
+    """
+    Functie de afisare a meniului
+    """
+
     print('1. Creare cheltuiala noua')
     print('2. Vizualizarea unei anumite cheltuieli de la un numar de apartament dat')
     print('3. Modificarea unei cheltuieli')
