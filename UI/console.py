@@ -1,4 +1,4 @@
-from Domain.expense import getnewexpense
+from Domain.expense2 import getnewexpense
 from Logic.crud import create, update, delete, read
 from Tests.tests_for_crud import test_crud
 

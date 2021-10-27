@@ -1,4 +1,4 @@
-from Domain.expense import getnewexpense, get_nr_apartment
+from Domain.expense2 import getnewexpense, get_nr_apartment
 from Logic.crud import create, read, update, delete
 
 

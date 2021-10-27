@@ -1,4 +1,4 @@
-from Domain.expense import getnewexpense, get_nr_apartment
+from Domain.expense2 import getnewexpense, get_nr_apartment
 
 
 def create(expense_list: list, _nr_apartment: int, _sum: int, _data: str, _type: str):
