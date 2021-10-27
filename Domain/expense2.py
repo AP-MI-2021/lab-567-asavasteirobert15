@@ -34,12 +34,12 @@ def get_type(expense_as_list):
     return expense_as_list[3]
 
 
-def get_expense_into_string(expense):
+def get_expense_into_string(expense_as_list):
 
     """
     Functia permite citirea unei cheltuieli ca si string
     :param expense: list: cheltuiala ce trebuie citita/afisata
     """
 
-    return f'Cheltuiala de la apartamentul {get_nr_apartment(expense)} este in valoare de {get_sum(expense)} din data '\
-           f'de {get_data(expense)}, avand tipul {get_type(expense)}'
+    return f'Cheltuiala de la apartamentul {get_nr_apartment(expense_as_list)} este in valoare de {get_sum(expense_as_list)} din data '\
+           f'de {get_data(expense_as_list)}, avand tipul {get_type(expense_as_list)}'
