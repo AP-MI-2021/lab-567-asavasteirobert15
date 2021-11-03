@@ -18,6 +18,7 @@ def get_data():
 
         ]
 
+
 def test_create():
 
     """
@@ -26,7 +27,7 @@ def test_create():
 
     list = get_data()
     new_expense = getnewexpense(1, 7, 1000, '12.12.2020', 'canal')
-    new_list= create(list,1, 7, 1000, '12.12.2020', 'canal')
+    new_list = create(list, 1, 7, 1000, '12.12.2020', 'canal')
     assert len(list) + 1 == len(new_list)
     assert new_expense in new_list
 
@@ -70,7 +71,6 @@ def test_delete():
     assert random_expense not in new_list
 
 
-
 def test_crud():
 
     """
@@ -81,4 +81,3 @@ def test_crud():
     test_read()
     test_update()
     test_delete()
-

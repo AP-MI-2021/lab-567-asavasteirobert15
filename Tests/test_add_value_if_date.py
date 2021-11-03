@@ -19,7 +19,6 @@ def get_data():
         ]
 
 
-
 def test_add_value_if_date():
     list = get_data()
     list2 = get_data()

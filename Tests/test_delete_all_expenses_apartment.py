@@ -18,6 +18,7 @@ def get_data():
 
         ]
 
+
 def test_delete_all_expenses_apartment():
     list = get_data()
     contor = 0

@@ -1,4 +1,4 @@
-from Domain.expense import get_data, set_sum, get_sum
+from Domain.expense import get_data
 
 
 def add_value_if_date(cheltuieli: list, data: str, value: float):

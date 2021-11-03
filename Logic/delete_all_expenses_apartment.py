@@ -16,5 +16,3 @@ def delete_all_expenses_apartment(expense_list: list, _nr_apartment: int):
             result_list.append(expense)
 
     return result_list
-
-

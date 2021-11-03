@@ -4,6 +4,7 @@ from Logic.biggest_sum_by_type import biggest_sum_by_type
 from Logic.crud import create, update, delete, read
 from Logic.delete_all_expenses_apartment import delete_all_expenses_apartment
 from Tests.test_add_value_if_date import test_add_value_if_date
+from Tests.test_biggest_sum_by_type import test_biggest_sum_by_type
 from Tests.test_delete_all_expenses_apartment import test_delete_all_expenses_apartment
 from Tests.tests_for_crud import test_crud
 
@@ -112,17 +113,18 @@ def handle_add_value_if_date(cheltuieli):
 
 
 
-def handle_biggest_sum_by_type(list):
+def handle_biggest_sum_by_type(cheltuieli):
     try:
-        sum_max_intretinere = biggest_sum_by_type(list, 'intretinere')
+        sum_max_intretinere = biggest_sum_by_type(cheltuieli, 'intretinere')
         print(f'Cea mai mare valoare a cheltuielilor de tip intretinere este {sum_max_intretinere}')
-        sum_max_canal = biggest_sum_by_type(list, 'canal')
+        sum_max_canal = biggest_sum_by_type(cheltuieli, 'canal')
         print(f'Cea mai mare valoare a cheltuielilor de tip canal este {sum_max_canal}')
-        sum_max_alte_cheltuieli = biggest_sum_by_type(list, 'alte cheltuieli')
+        sum_max_alte_cheltuieli = biggest_sum_by_type(cheltuieli, 'alte cheltuieli')
         print(f'Cea mai mare valoare a cheltuielilor de tip alte cheltuieli este {sum_max_alte_cheltuieli}')
     except ValueError as ve:
         print('Eroare', ve)
 
+    return cheltuieli
 
 
 def main():
@@ -151,9 +153,3 @@ def main():
         else:
             print('Optiune Invalida!')
 
-
-test_crud()
-test_delete_all_expenses_apartment()
-test_add_value_if_date()
-
-main()
