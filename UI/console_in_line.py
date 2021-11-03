@@ -124,6 +124,8 @@ def main2():
                 lista_cheltuieli = handle_read(lista_cheltuieli, comanda_sep[1])
             elif comanda_sep[0] == 'showall':
                 handle_showall(lista_cheltuieli)
+            elif comanda_sep[0] == 'delete':
+                lista_cheltuieli = handle_delete(lista_cheltuieli, comanda_sep[1])
             elif comanda_sep[0] == 'update':
                 lista_cheltuieli = handle_update(lista_cheltuieli, int(comanda_sep[1]), int(comanda_sep[2]),
                                               float(comanda_sep[3]), str(comanda_sep[4]), str(comanda_sep[5]))

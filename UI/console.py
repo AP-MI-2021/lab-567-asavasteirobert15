@@ -72,7 +72,6 @@ def handle_show_list(cheltuieli):
         print('Eroare: ', ve)
 
 
-
 def handle_delete(cheltuieli):
     try:
         _id_deleted = int(input('introduceti id-ul cheltuielii pe care doriti sa o stergeti: '))
