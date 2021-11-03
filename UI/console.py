@@ -3,10 +3,6 @@ from Logic.add_value_if_date import add_value_if_date
 from Logic.biggest_sum_by_type import biggest_sum_by_type
 from Logic.crud import create, update, delete, read
 from Logic.delete_all_expenses_apartment import delete_all_expenses_apartment
-from Tests.test_add_value_if_date import test_add_value_if_date
-from Tests.test_biggest_sum_by_type import test_biggest_sum_by_type
-from Tests.test_delete_all_expenses_apartment import test_delete_all_expenses_apartment
-from Tests.tests_for_crud import test_crud
 
 
 def show_menu():
