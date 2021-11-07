@@ -3,6 +3,7 @@ from Logic.add_value_if_date import add_value_if_date
 from Logic.biggest_sum_by_type import biggest_sum_by_type
 from Logic.crud import create, update, delete, read
 from Logic.delete_all_expenses_apartment import delete_all_expenses_apartment
+from Logic.descending_order_by_sum import descending_order_by_sum
 
 
 def show_menu():
@@ -17,7 +18,9 @@ def show_menu():
     print('5. Ștergerea tuturor cheltuielilor pentru un apartament dat.')
     print('6. Adunarea unei valori la toate cheltuielile dintr-o dată citită.')
     print('7. Determinarea celei mai mari cheltuieli pentru fiecare tip de cheltuială.')
+    print('8. Ordonarea cheltuielilor descrescător după sumă.')
     print('a. Afisarea listei de cheltuieli.')
+    print('z. Undo !')
     print('x. Exit !')
 
 
@@ -107,7 +110,6 @@ def handle_add_value_if_date(cheltuieli):
     return cheltuieli
 
 
-
 def handle_biggest_sum_by_type(cheltuieli):
     try:
         sum_max_intretinere = biggest_sum_by_type(cheltuieli, 'intretinere')
@@ -122,29 +124,64 @@ def handle_biggest_sum_by_type(cheltuieli):
     return cheltuieli
 
 
+def handle_descending_order_by_sum(cheltuieli):
+    try:
+        cheltuieli = descending_order_by_sum(cheltuieli)
+        print('Cheltuielile au fost ordonate descrescator dupa suma')
+    except ValueError as ve:
+        print('Eroare', ve)
+
+    return cheltuieli
+
+
+def handle_list_versions(list_versions, current_version, cheltuieli):
+    list_versions.append(cheltuieli)
+    current_version += 1
+    return list_versions, current_version
+
+
+def handle_undo(list_versions, current_version):
+    if current_version < 1:
+        print('Nu mai puteti face undo!')
+        return list_versions[current_version], current_version
+    current_version = current_version - 1
+    return list_versions[current_version], current_version
+
+
 def main():
-    list = []
+    cheltuieli = []
+    list_versions = [cheltuieli]
+    current_version = 0
     while True:
         show_menu()
         optiune = input("Alege optiunea: ")
         if optiune == '1':
-            list = handle_crate(list)
+            cheltuieli = handle_crate(cheltuieli)
+            list_versions, current_version = handle_list_versions(list_versions, current_version, cheltuieli)
         elif optiune == '2':
-            list = handle_read(list)
+            cheltuieli = handle_read(cheltuieli)
         elif optiune == '3':
-            list = handle_update(list)
+            cheltuieli = handle_update(cheltuieli)
+            list_versions, current_version = handle_list_versions(list_versions, current_version, cheltuieli)
         elif optiune == '4':
-            list = handle_delete(list)
+            cheltuieli = handle_delete(cheltuieli)
+            list_versions, current_version = handle_list_versions(list_versions, current_version, cheltuieli)
         elif optiune == '5':
-            list = handle_delete_all_expenses_apartment(list)
+            cheltuieli = handle_delete_all_expenses_apartment(cheltuieli)
+            list_versions, current_version = handle_list_versions(list_versions, current_version, cheltuieli)
         elif optiune == '6':
-            list = handle_add_value_if_date(list)
+            cheltuieli = handle_add_value_if_date(cheltuieli)
+            list_versions, current_version = handle_list_versions(list_versions, current_version, cheltuieli)
         elif optiune == '7':
-            list = handle_biggest_sum_by_type(list)
+            cheltuieli = handle_biggest_sum_by_type(cheltuieli)
+        elif optiune == '8':
+            cheltuieli = handle_descending_order_by_sum(cheltuieli)
+            list_versions, current_version = handle_list_versions(list_versions, current_version, cheltuieli)
         elif optiune == 'a':
-            handle_show_list(list)
+            handle_show_list(cheltuieli)
+        elif optiune == 'z':
+            cheltuieli, current_version = handle_undo(list_versions, current_version)
         elif optiune == 'x':
             break
         else:
             print('Optiune Invalida!')
-

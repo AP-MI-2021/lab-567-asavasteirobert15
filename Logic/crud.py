@@ -18,6 +18,9 @@ def create(expense_list: list, _id: int, _nr_apartment: int, _sum: int, _data: s
         raise ValueError('Tipul nu poate fi acceptat!')
     if len(_data) != 10:
         raise ValueError('Data trebuie sa fie in format DD.MM.YYYY !!!')
+    for expense in expense_list:
+        if _id == get_id(expense):
+            raise ValueError('Id-ul trebuie sa fie unic!')
     expense = getnewexpense(_id, _nr_apartment, _sum, _data, _type)
     return expense_list + [expense]
 
