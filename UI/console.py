@@ -162,24 +162,27 @@ def handle_redo(list_versions, current_version):
 
 
 def handle_every_ap_sum_by_month(cheltuieli):
-    lst_ap = ap_list(cheltuieli)
-    lst_sume_lunare = list_sum_by_month(cheltuieli, lst_ap)
+    try:
+        lst_ap = ap_list(cheltuieli)
+        lst_sume_lunare = list_sum_by_month(cheltuieli, lst_ap)
 
-    for index in range(0, len(lst_ap)):
-        print(' ')
-        print(f'Sumele lunare pentru apartamentul {lst_ap[index]} sunt:')
-        print(f'Ianuarie:   {lst_sume_lunare[index][0]}')
-        print(f'Februarie:  {lst_sume_lunare[index][1]}')
-        print(f'Martie:     {lst_sume_lunare[index][2]}')
-        print(f'Aprilie:    {lst_sume_lunare[index][3]}')
-        print(f'Mai:        {lst_sume_lunare[index][4]}')
-        print(f'Iunie:      {lst_sume_lunare[index][5]}')
-        print(f'Iulie:      {lst_sume_lunare[index][6]}')
-        print(f'August:     {lst_sume_lunare[index][7]}')
-        print(f'Septembrie: {lst_sume_lunare[index][8]}')
-        print(f'Octombrie:  {lst_sume_lunare[index][9]}')
-        print(f'Noiembrie:  {lst_sume_lunare[index][10]}')
-        print(f'Decembrie:  {lst_sume_lunare[index][11]}')
+        for index in range(0, len(lst_ap)):
+            print(' ')
+            print(f'Sumele lunare pentru apartamentul {lst_ap[index]} sunt:')
+            print(f'Ianuarie:   {lst_sume_lunare[index][0]}')
+            print(f'Februarie:  {lst_sume_lunare[index][1]}')
+            print(f'Martie:     {lst_sume_lunare[index][2]}')
+            print(f'Aprilie:    {lst_sume_lunare[index][3]}')
+            print(f'Mai:        {lst_sume_lunare[index][4]}')
+            print(f'Iunie:      {lst_sume_lunare[index][5]}')
+            print(f'Iulie:      {lst_sume_lunare[index][6]}')
+            print(f'August:     {lst_sume_lunare[index][7]}')
+            print(f'Septembrie: {lst_sume_lunare[index][8]}')
+            print(f'Octombrie:  {lst_sume_lunare[index][9]}')
+            print(f'Noiembrie:  {lst_sume_lunare[index][10]}')
+            print(f'Decembrie:  {lst_sume_lunare[index][11]}')
+    except ValueError as ve:
+        print('Eroare:', ve)
 
 
 def main():
