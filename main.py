@@ -3,6 +3,7 @@ from Tests.test_biggest_sum_by_type import test_biggest_sum_by_type
 from Tests.test_delete_all_expenses_apartment import test_delete_all_expenses_apartment
 from Tests.test_descending_order_by_sum import test_descending_order_by_sum
 from Tests.test_every_ap_sum_by_month import test_every_ap_sum_by_month
+from Tests.test_undo_redo import test_undo_redo
 from Tests.tests_for_crud import test_crud
 from UI.console import main
 
@@ -13,5 +14,6 @@ test_add_value_if_date()
 test_biggest_sum_by_type()
 test_descending_order_by_sum()
 test_every_ap_sum_by_month()
+test_undo_redo()
 
 main()
