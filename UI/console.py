@@ -4,6 +4,7 @@ from Logic.biggest_sum_by_type import biggest_sum_by_type
 from Logic.crud import create, update, delete, read
 from Logic.delete_all_expenses_apartment import delete_all_expenses_apartment
 from Logic.descending_order_by_sum import descending_order_by_sum
+from Logic.every_ap_sum_by_month import ap_list, list_sum_by_month
 
 
 def show_menu():
@@ -19,8 +20,10 @@ def show_menu():
     print('6. Adunarea unei valori la toate cheltuielile dintr-o dată citită.')
     print('7. Determinarea celei mai mari cheltuieli pentru fiecare tip de cheltuială.')
     print('8. Ordonarea cheltuielilor descrescător după sumă.')
+    print('9. Afișarea sumelor lunare pentru fiecare apartament.')
     print('a. Afisarea listei de cheltuieli.')
     print('z. Undo !')
+    print('y. Redo !')
     print('x. Exit !')
 
 
@@ -135,6 +138,8 @@ def handle_descending_order_by_sum(cheltuieli):
 
 
 def handle_list_versions(list_versions, current_version, cheltuieli):
+    while current_version < len(list_versions) - 1:
+        list_versions.pop()
     list_versions.append(cheltuieli)
     current_version += 1
     return list_versions, current_version
@@ -146,6 +151,35 @@ def handle_undo(list_versions, current_version):
         return list_versions[current_version], current_version
     current_version = current_version - 1
     return list_versions[current_version], current_version
+
+
+def handle_redo(list_versions, current_version):
+    if current_version == len(list_versions) - 1:
+        print('Nu mai puteti face redo!')
+        return list_versions[current_version], current_version
+    current_version += 1
+    return list_versions[current_version], current_version
+
+
+def handle_every_ap_sum_by_month(cheltuieli):
+    lst_ap = ap_list(cheltuieli)
+    lst_sume_lunare = list_sum_by_month(cheltuieli, lst_ap)
+
+    for index in range(0, len(lst_ap)):
+        print(' ')
+        print(f'Sumele lunare pentru apartamentul {lst_ap[index]} sunt:')
+        print(f'Ianuarie:   {lst_sume_lunare[index][0]}')
+        print(f'Februarie:  {lst_sume_lunare[index][1]}')
+        print(f'Martie:     {lst_sume_lunare[index][2]}')
+        print(f'Aprilie:    {lst_sume_lunare[index][3]}')
+        print(f'Mai:        {lst_sume_lunare[index][4]}')
+        print(f'Iunie:      {lst_sume_lunare[index][5]}')
+        print(f'Iulie:      {lst_sume_lunare[index][6]}')
+        print(f'August:     {lst_sume_lunare[index][7]}')
+        print(f'Septembrie: {lst_sume_lunare[index][8]}')
+        print(f'Octombrie:  {lst_sume_lunare[index][9]}')
+        print(f'Noiembrie:  {lst_sume_lunare[index][10]}')
+        print(f'Decembrie:  {lst_sume_lunare[index][11]}')
 
 
 def main():
@@ -177,10 +211,14 @@ def main():
         elif optiune == '8':
             cheltuieli = handle_descending_order_by_sum(cheltuieli)
             list_versions, current_version = handle_list_versions(list_versions, current_version, cheltuieli)
+        elif optiune == '9':
+            handle_every_ap_sum_by_month(cheltuieli)
         elif optiune == 'a':
             handle_show_list(cheltuieli)
         elif optiune == 'z':
             cheltuieli, current_version = handle_undo(list_versions, current_version)
+        elif optiune == 'y':
+            cheltuieli, current_version = handle_redo(list_versions, current_version)
         elif optiune == 'x':
             break
         else:
